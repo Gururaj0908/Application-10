@@ -1,0 +1,258 @@
+
+<app-header></app-header>
+
+<div [class]="theme">
+  <div>
+    <mat-sidenav-container fxFlexFill>
+      <mat-sidenav-content fxFlexFill>
+        <div class="login-container">
+          <mat-tab-group>
+            <mat-tab label="{{ l.GetString('LoginForm') }}">
+              <mat-card class="loginCard">
+                <mat-card-header>
+                  <h3 i18n>{{ l.GetString("LoginForm") }}</h3>
+                </mat-card-header>
+                <mat-card-content>
+                  <form  novalidate (ngSubmit)="login()">
+                    <mat-form-field class="form-control">
+                      <span
+                        matPrefix
+                        matTooltip="{{ l.GetString('EmailTooltip') }}"
+                      >
+                        <mat-icon class="fieldIcon">account_box</mat-icon>
+                      </span>
+                      <input
+                        matInput
+                        type="text"
+                        autocomplete
+                        placeholder="{{ l.GetString('UserName') }}"
+                        required
+                      />
+                      <button
+                        tabindex="-1"
+                        type="button"
+                        *ngIf="model.username"
+                        matSuffix
+                        mat-icon-button
+                        aria-label="Clear"
+                        (click)="model.username = ''"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                      <mat-error>{{ loginUsernameError() }}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form-control">
+                      <span matPrefix>
+                        <mat-icon class="fieldIcon">vpn_key</mat-icon>
+                      </span>
+                      <input
+                        matInput
+                        type="password"
+                        autocomplete
+                        placeholder="{{ l.GetString('Password') }}"
+                        #password
+                        required
+                      />
+                      <button
+                        tabindex="-1"
+                        type="button"
+                        *ngIf="model.password"
+                        matSuffix
+                        mat-icon-button
+                        aria-label="Show"
+                        (mousedown)="passwordReveal(true, password)"
+                        (mouseup)="passwordReveal(false, password)"
+                      >
+                        <mat-icon>remove_red_eye</mat-icon>
+                      </button>
+                      <mat-error>{{ loginPasswordError() }}</mat-error>
+                    </mat-form-field>
+                    <p>&nbsp;</p>
+
+                    <button
+                      mat-raised-button
+                      color="accent"
+                      [disabled]="LoginForm.invalid"
+                      type="submit"
+                    >
+                      <mat-icon>lock_open</mat-icon>
+                      <span>{{ l.GetString("SignIn") }}</span>
+                    </button>
+                  </form>
+                </mat-card-content>
+              </mat-card>
+            </mat-tab>
+            <mat-tab label="{{ l.GetString('RegisterForm') }}">
+              <mat-card class="loginCard">
+                <mat-card-header>
+                  <h3>{{ l.GetString("RegisterForm") }}</h3>
+                </mat-card-header>
+                <mat-card-content>
+                  <form
+                    novalidate
+                    (ngSubmit)="register()"
+                  >
+                    <mat-form-field class="form-control">
+                      <input
+                        matInput
+                        type="text"
+                        autocomplete
+                        placeholder="{{ l.GetString('FullName') }}"
+                        required
+                      />
+                      <button
+                        tabindex="-1"
+                        type="button"
+                        *ngIf="model.username"
+                        matSuffix
+                        mat-icon-button
+                        aria-label="Clear"
+                        (click)="model.username = ''"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                      <mat-error>{{ nameError() }}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form-control">
+                      <input
+                        matInput
+                        type="text"
+                        autocomplete
+                        placeholder="{{ l.GetString('Email') }}"
+                        required
+                      />
+
+                      <button
+                        tabindex="-1"
+                        type="button"
+                        *ngIf="model.username"
+                        matSuffix
+                        mat-icon-button
+                        aria-label="Clear"
+                        (click)="model.username = ''"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                      <mat-error>{{ emailError() }}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form-control">
+                      <input
+                        matInput
+                        type="text"
+                        autocomplete
+                        placeholder="{{ l.GetString('Mobile') }}"
+                        required
+                      />
+                      <button
+                        tabindex="-1"
+                        type="button"
+                        *ngIf="model.username"
+                        matSuffix
+                        mat-icon-button
+                        aria-label="Clear"
+                        (click)="model.username = ''"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                      <mat-error>{{ mobileNoError() }}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form-control">
+                      <input
+                        matInput
+                        type="text"
+                        autocomplete
+                        placeholder="{{ l.GetString('UserName') }}"
+                        required
+                      />
+                      <mat-error>{{ usernameError() }}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form-control">
+                      <input
+                        matInput
+                        type="password"
+                        autocomplete
+                        placeholder="{{ l.GetString('Password') }}"
+                        required
+                      />
+                      <mat-error>{{ passwordError() }}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form-control">
+                      <input
+                        matInput
+                        type="password"
+                        autocomplete
+                        placeholder="{{ l.GetString('ConfirmPassword') }}"
+                        required
+                      />
+                      <mat-error>{{ confirmPasswordError() }}</mat-error>
+                    </mat-form-field>
+                    <button mat-raised-button color="accent" type="submit">
+                      <span>{{ l.GetString("Register") }}</span>
+                    </button>
+
+                    <p *ngIf="loading">&nbsp;</p>
+                    <mat-progress-bar
+                      *ngIf="loading"
+                      mode="indeterminate"
+                    ></mat-progress-bar>
+                  </form>
+                </mat-card-content>
+              </mat-card>
+            </mat-tab>
+          </mat-tab-group>
+          <div class="forget-password">{{ l.GetString("ForgotPassword") }}</div>
+          <mat-divider></mat-divider>
+          <div class="social-media-buttons">
+            <button type="button" class="google-button"
+                [class.disabled]="disabled"
+                [class.light]="color === 'light'"
+                [class.dark]="color === 'dark'"
+                (click)="googleLogin()">
+                <span class="icon">
+                    <svg viewBox="0 0 366 372" xmlns="http://www.w3.org/2000/svg"><path
+                        d="M125.9 10.2c40.2-13.9 85.3-13.6 125.3 1.1 22.2 8.2 42.5 21 59.9 37.1-5.8 6.3-12.1 12.2-18.1 18.3l-34.2 34.2c-11.3-10.8-25.1-19-40.1-23.6-17.6-5.3-36.6-6.1-54.6-2.2-21 4.5-40.5 15.5-55.6 30.9-12.2 12.3-21.4 27.5-27 43.9-20.3-15.8-40.6-31.5-61-47.3 21.5-43 60.1-76.9 105.4-92.4z"
+                        id="Shape" fill="#EA4335"/><path
+                        d="M20.6 102.4c20.3 15.8 40.6 31.5 61 47.3-8 23.3-8 49.2 0 72.4-20.3 15.8-40.6 31.6-60.9 47.3C1.9 232.7-3.8 189.6 4.4 149.2c3.3-16.2 8.7-32 16.2-46.8z"
+                        id="Shape" fill="#FBBC05"/><path
+                        d="M361.7 151.1c5.8 32.7 4.5 66.8-4.7 98.8-8.5 29.3-24.6 56.5-47.1 77.2l-59.1-45.9c19.5-13.1 33.3-34.3 37.2-57.5H186.6c.1-24.2.1-48.4.1-72.6h175z"
+                        id="Shape" fill="#4285F4"/><path
+                        d="M81.4 222.2c7.8 22.9 22.8 43.2 42.6 57.1 12.4 8.7 26.6 14.9 41.4 17.9 14.6 3 29.7 2.6 44.4.1 14.6-2.6 28.7-7.9 41-16.2l59.1 45.9c-21.3 19.7-48 33.1-76.2 39.6-31.2 7.1-64.2 7.3-95.2-1-24.6-6.5-47.7-18.2-67.6-34.1-20.9-16.6-38.3-38-50.4-62 20.3-15.7 40.6-31.5 60.9-47.3z"
+                        fill="#34A853"/></svg>
+                </span>
+                <span class="text">Login with Google</span>
+            </button>
+            <button type="button" class="facebook-button"
+                [class.disabled]="disabled"
+                [class.light]="color === 'light'"
+                [class.dark]="color === 'dark'"
+                (click)="facebookLogin()">
+                <span class="icon">
+                    <svg width="20" height="28" viewBox="0 0 28 29">
+                    <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                    </svg>
+                </span>
+                <span class="text">Login with Facebook</span>
+            </button>
+            <button type="button" class="apple-button"
+                    [class.disabled]="disabled"
+                    [class.light]="color === 'light'"
+                    [class.dark]="color === 'dark'"
+                    (click)="appleLogin()">
+                    <span class="icon">
+                        <svg width="24px" height="44px" viewBox="0 0 24 44" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Left-Black-Logo-Small" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect id="Rectangle" x="0" y="0" width="24" height="44"></rect>
+                            <path
+                            d="M12.2337427,16.9879688 C12.8896607,16.9879688 13.7118677,16.5445313 14.2014966,15.9532812 C14.6449341,15.4174609 14.968274,14.6691602 14.968274,13.9208594 C14.968274,13.8192383 14.9590357,13.7176172 14.9405591,13.6344727 C14.2107349,13.6621875 13.3330982,14.1241016 12.8065162,14.7430664 C12.3907935,15.2142188 12.012024,15.9532812 12.012024,16.7108203 C12.012024,16.8216797 12.0305005,16.9325391 12.0397388,16.9694922 C12.0859302,16.9787305 12.1598365,16.9879688 12.2337427,16.9879688 Z M9.92417241,28.1662891 C10.8202857,28.1662891 11.2175318,27.5658008 12.3353638,27.5658008 C13.4716724,27.5658008 13.721106,28.1478125 14.7188404,28.1478125 C15.6980982,28.1478125 16.3540162,27.2424609 16.972981,26.3555859 C17.6658521,25.339375 17.9522388,24.3416406 17.9707154,24.2954492 C17.9060474,24.2769727 16.0306763,23.5101953 16.0306763,21.3576758 C16.0306763,19.491543 17.5088013,18.6508594 17.5919459,18.5861914 C16.612688,17.1819727 15.1253248,17.1450195 14.7188404,17.1450195 C13.6194849,17.1450195 12.7233716,17.8101758 12.1598365,17.8101758 C11.5501099,17.8101758 10.7463794,17.1819727 9.79483648,17.1819727 C7.98413335,17.1819727 6.14571538,18.6785742 6.14571538,21.5054883 C6.14571538,23.2607617 6.8293482,25.1176563 7.67003179,26.3186328 C8.39061773,27.3348438 9.01882085,28.1662891 9.92417241,28.1662891 Z"
+                            id="logo" fill="#000000" fill-rule="nonzero"></path>
+                        </g>
+                    </svg>
+                    </span>
+                    <span class="text">Login with Apple</span>
+            </button>
+          </div>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+</div>

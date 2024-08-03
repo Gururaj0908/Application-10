@@ -1,0 +1,36 @@
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+
+
+.example-input-wrapper {
+    margin-bottom: 16px;
+  }
+  
+  label {
+    margin-right: 4px;
+  }
+  .sidebar {
+    width: 200px;
+    .step {
+      display: flex;
+      align-items: center;
+      .step-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: #f0f0f0;
+        &.active {
+          background-color: #3f51b5;
+          color: white;
+        }
+      }
+      .step-name {
+        margin-left: 10px;
+      }
+    }
+  }
+  

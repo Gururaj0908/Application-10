@@ -1,0 +1,59 @@
+/* Toolbar */
+.toolbar-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.subscribe-btn {
+  background-color: red;
+  color: white;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 48px 0 0; /* Height of navbar */
+}
+
+.sidebar-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 48px; /* Height of navbar */
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+/* Main content adjustments */
+main {
+  padding-top: 20px;
+}
+
+.breaking-news {
+  margin-bottom: 20px;
+}
+
+.advertisement {
+  margin-bottom: 20px;
+}
+
+.tags button {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.news-article mat-card {
+  margin-bottom: 20px;
+}

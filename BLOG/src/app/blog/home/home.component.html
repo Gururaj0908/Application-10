@@ -1,0 +1,116 @@
+<app-header></app-header>
+
+<mat-toolbar color="primary" class="mat-elevation-z4">
+  <span class="toolbar-title">INDIA TODAY</span>
+  <span class="spacer"></span>
+  <button mat-button>Sign In</button>
+</mat-toolbar>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+      <div class="sidebar-sticky pt-3">
+        <button mat-button class="subscribe-btn" routerLink="/blog/subscribe">Subscribe</button>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/blog/home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/blog/tv">TV</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link">Magazine</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/blog/life-style">Life+Style</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/blog/india">India</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/blog/south">South</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/blog/world">World</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/blog/business">Business</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link">All Sports</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/blog/technology">Technology</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link">Entertainment</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link">Specials</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/blog/videos">Videos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/blog/fact-check">Fact Check</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link">Other News</a>
+          </li>
+          <!-- Add more categories as needed -->
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="tags my-3">
+        <button mat-button>Monsoon Alert</button>
+        <button mat-button>Paris Olympics</button>
+        <button mat-button>US Elections</button>
+        <button mat-button>Budget 2024</button>
+        <button mat-button>NEET Row</button>
+      </div>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+</div>
+
+<mat-menu #tvMenu="matMenu">
+  <button mat-menu-item routerLink="/blog/live-tv">Live TV</button>
+  <button mat-menu-item>Shows</button>
+  <button mat-menu-item>Schedule</button>
+</mat-menu>
+
+<mat-menu #magazineMenu="matMenu">
+  <button mat-menu-item routerLink="/blog/insight">Insights</button>
+  <button mat-menu-item>Archives</button>
+  <button mat-menu-item routerLink="/blog/subscribe">Subscribe</button>
+</mat-menu>
+
+<mat-menu #sportsMenu="matMenu">
+  <button mat-menu-item>Cricket</button>
+  <button mat-menu-item>Football</button>
+  <button mat-menu-item>Olympics</button>
+</mat-menu>
+
+<mat-menu #entertainmentMenu="matMenu">
+  <button mat-menu-item>Movies</button>
+  <button mat-menu-item>TV Shows</button>
+  <button mat-menu-item>Special Events</button>
+</mat-menu>
+
+<mat-menu #specialMenu="matMenu">
+  <button mat-menu-item>Movies</button>
+  <button mat-menu-item>TV Shows</button>
+  <button mat-menu-item>Special Events</button>
+</mat-menu>
+
+<mat-menu #newsMenu="matMenu">
+  <button mat-menu-item>Local News</button>
+  <button mat-menu-item>International News</button>
+  <button mat-menu-item>Opinion</button>
+</mat-menu>
+
+

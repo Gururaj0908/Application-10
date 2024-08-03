@@ -1,0 +1,28 @@
+
+
+
+<app-header></app-header>
+
+<div class="container-1" >
+
+  <div>
+    <mat-icon>user</mat-icon>
+  </div>
+  <div class="container">
+    <mat-form-field appearance="fill">
+      <mat-label>Indian States</mat-label>
+      <mat-select [(value)]="selectedState">
+        <mat-option *ngFor="let state of states" [value]="state">{{ state }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div>
+      <button mat mat-raised-button color="accent" routerLink="/real-estate/user/payment">
+        get Flats
+      </button>
+    </div>
+</div>
+
+
+</div>
+  

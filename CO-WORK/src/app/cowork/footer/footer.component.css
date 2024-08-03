@@ -1,0 +1,49 @@
+.loginCard{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+     max-width: 28%;
+     margin: 2em auto;
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     transform: translate(-50%, -50%);
+  
+   }
+
+   .second-toolbar{
+    background-color: #1976d2;
+    height: 100px;
+    .hrsearch{
+      width: 50%;
+      display: block;
+      /* height: 29px; */
+      position: relative;
+      margin: 0 auto;
+  }
+  .logo1{
+    font-size: 28px;
+    color: #fff;
+    font-weight: 600;
+  }
+  .search-product{
+  margin-top: 0px;
+  input{
+    height: 44px;
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 21px;
+      border: none;
+  }
+  }
+  .search-align {
+    position: absolute;
+    right: 35px;
+    top: 6px;
+    font-size: 33px;
+    border-left: 1px solid #999;
+    padding-left: 11px;
+    color: rgba(0,0,0,.54);
+  }
+  }

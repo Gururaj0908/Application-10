@@ -1,0 +1,12 @@
+.loginCard{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+     max-width: 28%;
+     margin: 2em auto;
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     transform: translate(-50%, -50%);
+  
+   }
